@@ -16,6 +16,7 @@ import {ShoppingListService} from "./services/shopping-list.service";
 import {AppRouterModule} from "./app-router.module";
 import {NoRecipeComponent} from "./no-recipe/no-recipe.component";
 import {RecipeEditComponent} from "./recipe/recipe-edit/recipe-edit.component";
+import {RecipeService} from "./services/recipe.service";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {RecipeEditComponent} from "./recipe/recipe-edit/recipe-edit.component";
     AppRouterModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

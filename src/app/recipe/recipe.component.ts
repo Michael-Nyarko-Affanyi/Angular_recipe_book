@@ -6,7 +6,7 @@ import {RecipeService} from "../services/recipe.service";
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.css',
-  providers: [RecipeService]
+  // providers: [RecipeService]
 })
 export class RecipeComponent implements OnInit{
  @Input() recipeItem: Recipe;
@@ -32,6 +32,5 @@ export class RecipeComponent implements OnInit{
        {name: 'Plantain', amount: 7},
        {name: 'Goat Meat', amount: 70},
      ])
-   this.recipeService.subscribeToRecipeSelected((value: Recipe) => {this.recipeItem = value})
  }
 }
