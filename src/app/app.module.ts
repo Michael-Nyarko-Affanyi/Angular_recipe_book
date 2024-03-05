@@ -18,6 +18,7 @@ import {NoRecipeComponent} from "./no-recipe/no-recipe.component";
 import {RecipeEditComponent} from "./recipe/recipe-edit/recipe-edit.component";
 import {RecipeService} from "./services/recipe.service";
 import {HttpClientModule} from "@angular/common/http";
+import {AuthComponent} from "./auth/auth.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppUnlessDirective,
     DropdownDirective,
     NoRecipeComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
