@@ -8,6 +8,11 @@ export class RecipeService {
   updatedRecipes = new Subject<Recipe[]>()
 
   constructor() { }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes
+    this.updatedRecipes.next(this.recipes.slice())
+  }
   getRecipe() {
     return this.recipes.slice()
   }

@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from "@angular/core";
+import {DataStorageService} from "../services/data-storage.service";
 
 
 @Component({
@@ -8,4 +9,15 @@ import {Component, EventEmitter, Output} from "@angular/core";
 })
 export class HeaderComponent {
   tabs = [{key: 'recipes', value: 'Recipes'}, {key: 'shopping-lists', value: 'Shopping List'}]
+
+  constructor(private dataStorageService: DataStorageService) {
+  }
+
+  handleSave() {
+    this.dataStorageService.saveRecipes()
+  }
+
+  handleFetch() {
+    this.dataStorageService.fetchRecipes()
+  }
 }
