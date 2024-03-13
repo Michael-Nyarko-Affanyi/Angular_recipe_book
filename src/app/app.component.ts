@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  currentTab = 'recipe'
+export class AppComponent implements OnInit{
 
-
-  handleNavigation(tab: string) {
-    this.currentTab = tab
+  constructor(private authService: AuthService) {
   }
+  ngOnInit() {
+    this.authService.autoLogin()
+  }
+
 }

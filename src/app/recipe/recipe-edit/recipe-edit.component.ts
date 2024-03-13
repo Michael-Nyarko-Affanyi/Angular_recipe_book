@@ -73,9 +73,11 @@ export class RecipeEditComponent implements OnInit{
 
     if (this.editMode) {
       this.recipeService.editRecipe(this.editItemId, this.recipeForm.value)
-      return;
+    } else {
+      this.recipeService.addRecipe(name, description, imagePath, ingredients)
     }
-    this.recipeService.addRecipe(name, description, imagePath, ingredients)
+
+    this.recipeForm.reset()
   }
 
   protected readonly FormArray = FormArray;
