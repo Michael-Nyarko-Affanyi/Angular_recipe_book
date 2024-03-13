@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {NgForm} from "@angular/forms";
-import {AuthService} from "../services/auth.service";
+import {AuthResponseType, AuthService} from "../services/auth.service";
+import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'appAuth',
@@ -11,26 +13,31 @@ export class AuthComponent implements OnInit{
   isLoginMode = true
   error = null
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   switchMode() {
     this.isLoginMode = !this.isLoginMode
   }
 
   handleSubmit(form: NgForm) {
+    let authObservable: Observable<AuthResponseType>
     const {email, password} = form.value
     if(form.invalid) return
     if(this.isLoginMode) {
-
+      authObservable = this.authService.login(email, password)
     } else {
-      this.authService.signup(email, password).subscribe(
-        (response => {
-          console.log(response)
-        }),
-        (error) => {
-          console.log(error)
-        }
-      )
+      authObservable = this.authService.signup(email, password)
     }
+
+    authObservable.subscribe(
+      (response => {
+        this.router.navigate(['/recipes'])
+      }),
+      (error) => {
+        console.log(error)
+        this.error = error
+      }
+    )
+
     form.reset()
 }
 
